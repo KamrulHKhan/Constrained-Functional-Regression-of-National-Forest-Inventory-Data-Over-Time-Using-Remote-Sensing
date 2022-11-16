@@ -102,8 +102,8 @@ phi_generate_Model_IIIB = function(input) ## generate phi and tau2
 						
         }
 
-	phi_construct = sweep(phi_construct, 2, colMeans(phi_construct))
-
+	phi_construct = phi_construct - mean(phi_construct)
+	
 	tau2_post_shape = a20 + (S-1)*T/2  
 	
 	tau2_post_rate = b20 + sum((phi_construct[rep(1:S, W_plus),] - phi_construct[unlist(W),])^2)/4
@@ -135,7 +135,7 @@ phi_generate_Model_IV = function(input)	## generate phi and tau2 for Model IV
 						
         }
 
-	phi_construct = sweep(phi_construct, 2, colMeans(phi_construct))
+	phi_construct = phi_construct - mean(phi_construct)
 
 	tau2_post_shape = a20 + (S-1)*T/2  
 	
